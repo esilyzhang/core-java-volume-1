@@ -21,7 +21,6 @@ public class FileInputAndOutput {
       System.out.println(in2.nextLine());
       in2.close();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
