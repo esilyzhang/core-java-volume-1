@@ -15,7 +15,8 @@ public class AnEmployeeClass {
 
     // 输出所有雇员的信息
     for (Employee e : staff) {
-      System.out.printf("name: %s, salary: %f, hireDay: %tY-%<tm-%<td", e.getName(), e.getSalary(), e.getHireDate());
+      System.out.printf("id: %d, name: %s, salary: %f, hireDay: %tY-%<tm-%<td", e.getId(), e.getName(), e.getSalary(),
+          e.getHireDate());
       System.out.println();
     }
   }
@@ -23,14 +24,23 @@ public class AnEmployeeClass {
 
 // Employee 类
 class Employee {
+  private static int nextId = 0;
+
+  private int id;
   private String name;
   private double salary;
   private LocalDate hireDate;
 
   public Employee(String n, double s, int year, int month, int day) {
+    setId();
     name = Objects.requireNonNull(n, "unknown"); // n 参数非 null - 9
     salary = s;
     hireDate = LocalDate.of(year, month, day);
+
+  }
+
+  public int getId() {
+    return id;
   }
 
   public String getName() {
@@ -48,6 +58,15 @@ class Employee {
   // 获取 private 数据
   public boolean equals(Employee other) {
     return name.equals(other.name);
+  }
+
+  public void setId() {
+    id = nextId;
+    nextId++;
+  }
+
+  public static int getNextId() {
+    return nextId;
   }
 
   public void raiseSalary(double byPrecent) {
