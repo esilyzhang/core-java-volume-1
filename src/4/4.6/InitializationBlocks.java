@@ -1,13 +1,13 @@
 public class InitializationBlocks {
   public static void main(String[] args) {
-    var stuff1 = new Employee5();
-    var stuff2 = new Employee5();
+    var stuff1 = new Employee();
+    var stuff2 = new Employee();
     System.out.println(stuff1.getId());
     System.out.println(stuff2.getId());
   }
 }
 
-class Employee5 {
+class Employee {
   private static int nextId;
   private int id;
   {
